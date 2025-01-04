@@ -34,8 +34,9 @@
             background-color: #1c1c1c;
             padding: 10px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         nav a {
@@ -44,6 +45,11 @@
             padding: 8px 15px;
             border-radius: 5px;
             transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+
+        nav a.active {
+            background-color: #007bff;
         }
 
         nav a:hover {
@@ -176,9 +182,9 @@
         }
 
         @media (max-width: 768px) {
-            .vip-container {
-                flex-direction: column;
-                align-items: center;
+            nav {
+                justify-content: center;
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -189,13 +195,13 @@
     </header>
 
     <nav>
-        <a href="#vip">VIP</a>
-        <a href="#dinheiro">Dinheiro</a>
-        <a href="#id">ID</a>
-        <a href="#unban">Unban</a>
-        <a href="#level">Level</a>
-        <a href="#corp">Corp & Fac</a>
-        <a href="#outros">Outros</a>
+        <a href="vip.html" class="active">VIP</a>
+        <a href="dinheiro.html">Dinheiro</a>
+        <a href="id.html">ID</a>
+        <a href="unban.html">Unban</a>
+        <a href="level.html">Level</a>
+        <a href="corp.html">Corp & Fac</a>
+        <a href="outros.html">Outros</a>
     </nav>
 
     <main>
@@ -273,6 +279,7 @@
                     <button class="info-btn" onclick="showInfo('vip7.png', 'VIP Mestre', 'Benefícios exclusivos do VIP Mestre.')">Info</button>
                 </div>
             </div>
+            <!-- Repetir estrutura para outros VIPs -->
         </section>
     </main>
 
@@ -286,7 +293,7 @@
     </div>
 
     <script>
-function showInfo(imgSrc, title, description) {
+     function showInfo(imgSrc, title, description) {
     document.getElementById('info-img').src = imgSrc;
     document.getElementById('info-title').textContent = title;
     document.getElementById('info-description').innerHTML = description;
@@ -300,6 +307,14 @@ function showInfo(imgSrc, title, description) {
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('info-panel').style.display = 'none';
         }
+
+        // Atualiza a classe "active" do menu
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", function() {
+                document.querySelector("nav a.active").classList.remove("active");
+                this.classList.add("active");
+            });
+        });
     </script>
 </body>
 </html>
