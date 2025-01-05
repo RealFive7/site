@@ -50,9 +50,8 @@
 
         nav a.active {
             background-color: #007bff;
-            animation: activateNav 0.5s ease-out; /* Animação de ativação */
+            animation: activateNav 0.5s ease-out;
         }
-
         @keyframes activateNav {
             0% {
                 background-color: #333;
@@ -239,7 +238,6 @@
             margin-bottom: 5px;
         }
 
-
         #info-panel .close-btn {
             background-color: transparent;
     color: #fff;
@@ -259,11 +257,6 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
             z-index: 999;
-        }
-
-        .old-price {
-            text-decoration: line-through;
-            color: #999;
         }
 
         @media (max-width: 768px) {
@@ -301,9 +294,9 @@
 
     <nav>
         <a href="index.html">VIP</a>
-        <a href="dinheiro.html" class="active">Dinheiro</a> <!-- A classe active é aplicada aqui -->
+        <a href="dinheiro.html">Dinheiro</a>
         <a href="id.html">ID</a>
-        <a href="unban.html">Unban</a>
+        <a href="unban.html" class="active">Unban</a>
         <a href="level.html">Level</a>
         <a href="corp.html">Corp & Fac</a>
         <a href="outros.html">Outros</a>
@@ -311,53 +304,24 @@
 
     <main>
         <section class="vip-container" id="vip">
-            <div class="vip-card">
-                <img src="dinheiro1.png" alt="Dinheiro Ouro">
-                <h3>10 MILHÕES</h3>
-                <p>De <span class="old-price">R$ 69,90</span> Por R$ 23,00</p>
+            <div class="vip-card"> 
+                <img src="unban.png" alt="Unban Permanente">
+                <h3>Unban Permanente</h3>
+                <p>Por apenas R$ 100,00</p>
                 <div class="button-container">
                     <button>Comprar</button>
-                    <button class="info-btn" onclick="showInfo('dinheiro1.png', 'Dinheiro Ouro', 
+                    <button class="info-btn" onclick="showInfo('unban.png', 'Unban Permanente', 
                     '&lt;ul&gt; \
-                    &lt;li&gt;&lt;strong&gt;Veículos de Luxo:&lt;/strong&gt; Acesso à Lamborghini Aventador e Audi RS6.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Moto Premium:&lt;/strong&gt; Disponível a Z1000 para maior mobilidade.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Recuperação Total:&lt;/strong&gt; Fome e sede sempre 100% para manter-se no topo.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Arsenal Completo:&lt;/strong&gt; Acesso a um Pack de Armas exclusivo.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Controle Total:&lt;/strong&gt; Possibilidade de destruir veículos VIP.&lt;/li&gt; \
+                    &lt;li&gt;Adquirindo esse produto você poderá remover seu banimento.&lt;/li&gt; \
                     &lt;/ul&gt;')">
                         Info
                     </button>
                 </div>
             </div>
-            <div class="vip-card">
-                <img src="dinheiro2.png" alt="Dinheiro Diamante">
-                <h3>20 MILHÕES</h3>
-                <p>De <span class="old-price">R$ 113,90</span> Por R$ 39,00</p>
-                <div class="button-container">
-                    <button>Comprar</button>
-                    <button class="info-btn" onclick="showInfo('dinheiro2.png', 'Dinheiro Diamante', 'Benefícios exclusivos do Dinheiro Diamante.')">Info</button>
-                </div>
-            </div>
-            <div class="vip-card">
-                <img src="dinheiro3.png" alt="Dinheiro Esmeralda">
-                <h3>30 MILHÕES</h3>
-                <p>De <span class="old-price">R$ 168,90</span> Por R$ 59,00</p>
-                <div class="button-container">
-                    <button>Comprar</button>
-                    <button class="info-btn" onclick="showInfo('dinheiro3.png', 'Dinheiro Esmeralda', 'Benefícios exclusivos do Dinheiro Esmeralda.')">Info</button>
-                </div>
-            </div>
-            <div class="vip-card">
-                <img src="dinheiro4.png" alt="Dinheiro Magnata">
-                <h3>40 MILHÕES</h3>
-                <p>De <span class="old-price">R$ 224,90</span> Por R$ 89,00</p>
-                <div class="button-container">
-                    <button>Comprar</button>
-                    <button class="info-btn" onclick="showInfo('dinheiro4.png', 'Dinheiro Magnata', 'Benefícios exclusivos do Dinheiro Magnata.')">Info</button>
-                </div>
-            </div>
+            
+            
+            <!-- Repetir estrutura para outros VIPs -->
         </section>
-        
     </main>
 
     <div id="overlay"></div>

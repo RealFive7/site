@@ -239,13 +239,13 @@
         }
 
         #info-panel .close-btn {
-            background-color: #ff0000;
-            color: #fff;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            float: right;
+            background-color: transparent;
+    color: #fff;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    padding: 5px;
         }
 
         #overlay {
@@ -371,7 +371,7 @@
     <div id="overlay"></div>
 
     <div id="info-panel">
-        <button class="close-btn" onclick="hideInfo()">Fechar</button>
+        <button class="close-btn" onclick="hideInfo()">&#10005;</button>
         <img id="info-img" src="" alt="VIP Image">
         <h3 id="info-title"></h3>
         <p id="info-description"></p>
