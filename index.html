@@ -50,6 +50,15 @@
 
         nav a.active {
             background-color: #007bff;
+            animation: activateNav 0.5s ease-out;
+        }
+        @keyframes activateNav {
+            0% {
+                background-color: #333;
+            }
+            100% {
+                background-color: #007bff;
+            }
         }
 
         nav a:hover {
@@ -191,7 +200,29 @@
             max-width: 400px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 1000;
-            animation: fadeIn 0.3s;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -60%) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes slideOut {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -60%) scale(0.8);
+            }
         }
 
         #info-panel img {
@@ -262,7 +293,7 @@
     </header>
 
     <nav>
-        <a href="vip.html" class="active">VIP</a>
+        <a href="index.html" class="active">VIP</a>
         <a href="dinheiro.html">Dinheiro</a>
         <a href="id.html">ID</a>
         <a href="unban.html">Unban</a>
@@ -367,11 +398,15 @@
 
             document.getElementById('overlay').style.display = 'block';
             document.getElementById('info-panel').style.display = 'block';
+            document.getElementById('info-panel').style.animation = 'slideIn 0.5s ease-out forwards';  // Reapply the animation
         }
 
         function hideInfo() {
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('info-panel').style.display = 'none';
+            document.getElementById('info-panel').style.animation = 'slideOut 0.5s ease-in forwards'; // Apply the slide out animation
+            setTimeout(function() {
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('info-panel').style.display = 'none';
+            }, 500);  // Wait for the animation to finish before hiding the panel
         }
 
         document.querySelectorAll("nav a").forEach(link => {
