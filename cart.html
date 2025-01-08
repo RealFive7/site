@@ -249,56 +249,74 @@
     </main>
 
     <script>
-function loadCart() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartItems = document.getElementById('cart-items');
-    const itemCount = document.getElementById('item-count');
-    const totalPrice = document.getElementById('total-price');
-
-    cartItems.innerHTML = '';
-    let total = 0;
-
-    cart.forEach((item, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.className = 'cart-item';
-        cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
-            <div class="item-details">
-                <h3>${item.name}</h3>
-                <p>R$ ${item.price.toFixed(2)}</p>
-            </div>
-            <button class="remove-btn" onclick="removeItem(${index})">Remover</button>
-        `;
-        cartItems.appendChild(cartItem);
-        total += item.price;
-    });
-
-    itemCount.textContent = cart.length;
-    totalPrice.textContent = total.toFixed(2);
-}
-
-
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cart-items');
+            const itemCount = document.getElementById('item-count');
+            const totalPrice = document.getElementById('total-price');
+    
+            cartItems.innerHTML = '';
+            let total = 0;
+    
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="item-details">
+                        <h3>${item.name}</h3>
+                        <p>R$ ${item.price.toFixed(2)}</p>
+                    </div>
+                    <button class="remove-btn" onclick="removeItem(${index})">Remover</button>
+                `;
+                cartItems.appendChild(cartItem);
+                total += item.price;
+            });
+    
+            itemCount.textContent = cart.length;
+            totalPrice.textContent = total.toFixed(2);
+        }
+    
         function removeItem(index) {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             loadCart();
         }
-
+    
         function finalizarCompra() {
             const total = parseFloat(document.getElementById('total-price').textContent);
             const qrcode = document.getElementById('qrcode');
             const qrcodeImg = qrcode.querySelector('img');
-
+    
             // Determina o nome do arquivo baseado no total
             const qrcodeFilename = `qrcodes/qrcode${total}.png`;
-
-            // Atualiza a imagem do QR code e a exibe
-            qrcodeImg.src = qrcodeFilename;
-            qrcode.style.display = 'block';
+    
+            // Função para verificar se a imagem existe
+            function imageExists(url, callback) {
+                const img = new Image();
+                img.onload = function() {
+                    callback(true);
+                };
+                img.onerror = function() {
+                    callback(false);
+                };
+                img.src = url;
+            }
+    
+            // Verifica se a imagem existe, caso contrário, usa a imagem padrão
+            imageExists(qrcodeFilename, function(exists) {
+                if (exists) {
+                    qrcodeImg.src = qrcodeFilename;
+                } else {
+                    qrcodeImg.src = 'qrcodes/qrcode-pix.png'; // Imagem padrão
+                }
+                qrcode.style.display = 'block';
+            });
         }
-
+    
         document.addEventListener('DOMContentLoaded', loadCart);
     </script>
+    
 </body>
 </html>
