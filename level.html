@@ -152,6 +152,17 @@
             }
         }
 
+        @keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.8);
+    }
+}
+
         .vip-card:nth-child(1) {
             animation-delay: 0.5s;
         }
@@ -336,22 +347,24 @@
 
     <nav>
         <a href="index.html">VIP</a>
-        <a href="dinheiro.html">Dinheiro</a>
-        <a href="id.html">ID</a>
+        <a href="dinheiro.html" >Dinheiro</a>
+        <a href="id.html" >ID</a>
         <a href="unban.html">Unban</a>
         <a href="level.html" class="active">Level</a>
-        <a href="corp.html">Corp & Fac</a>
+        <a href="corp.html">Corp</a>
+        <a href="fac.html" >Fac</a>
         <a href="outros.html">Outros</a>
+        <a href="cart.html">Carrinho</a>
     </nav>
 
     <main>
-        <section class="vip-container" id="vip">
+        <section class="vip-container" id="vip"> 
             <div class="vip-card">
                 <img src="level.png" alt="50 Leveis">
                 <h3>50 Leveis</h3>
-                <p>Por apenas R$ 39,00</p>
+                <p>Por apenas R$ 40,00</p>
                 <div class="button-container">
-                    <button>Comprar</button>
+                    <button onclick="addToCart('50 Leveis', 40.00, 'level.png')">Adicionar ao carrinho</button>
                     <button class="info-btn" onclick="showInfo('level.png', '50 Leveis', 
                     '&lt;ul&gt; \
                     &lt;li&gt;&lt;strong&gt;Vantagens:&lt;/strong&gt; Esse item é de único uso, e garante uma vantagem estratégica para quem busca o topo!&lt;/li&gt; \
@@ -364,38 +377,10 @@
             <div class="vip-card">
                 <img src="level.png" alt="100 Leveis">
                 <h3>100 Leveis</h3>
-                <p>Por apenas R$ 58,00</p>
+                <p>Por apenas R$ 60,00</p>
                 <div class="button-container">
-                    <button>Comprar</button>
-                    <button class="info-btn" onclick="showInfo('level.png', '50 Leveis', 
-                    '&lt;ul&gt; \
-                    &lt;li&gt;&lt;strong&gt;Vantagens:&lt;/strong&gt; Esse item é de único uso, e garante uma vantagem estratégica para quem busca o topo!&lt;/li&gt; \
-                    &lt;/ul&gt;')">
-                        Info
-                    </button>
-                </div>
-            </div>
-            <div class="vip-card">
-                <img src="level.png" alt="150 Leveis">
-                <h3>150 Leveis</h3>
-                <p>Por apenas R$ 90,00</p>
-                <div class="button-container">
-                    <button>Comprar</button>
-                    <button class="info-btn" onclick="showInfo('level.png', '50 Leveis', 
-                    '&lt;ul&gt; \
-                    &lt;li&gt;&lt;strong&gt;Vantagens:&lt;/strong&gt; Esse item é de único uso, e garante uma vantagem estratégica para quem busca o topo!&lt;/li&gt; \
-                    &lt;/ul&gt;')">
-                        Info
-                    </button>
-                </div>
-            </div>
-            <div class="vip-card">
-                <img src="level.png" alt="200 Leveis">
-                <h3>200 Leveis</h3>
-                <p>Por apenas R$ 100,00</p>
-                <div class="button-container">
-                    <button>Comprar</button>
-                    <button class="info-btn" onclick="showInfo('level.png', '50 Leveis', 
+                    <button onclick="addToCart('100 Leveis', 60.00, 'level.png')">Adicionar ao carrinho</button>
+                    <button class="info-btn" onclick="showInfo('level.png', '100 Leveis', 
                     '&lt;ul&gt; \
                     &lt;li&gt;&lt;strong&gt;Vantagens:&lt;/strong&gt; Esse item é de único uso, e garante uma vantagem estratégica para quem busca o topo!&lt;/li&gt; \
                     &lt;/ul&gt;')">
@@ -404,38 +389,128 @@
                 </div>
             </div>
             
-            <!-- Repetir estrutura para outros VIPs -->
+            <div class="vip-card">
+                <img src="level.png" alt="150 Leveis">
+                <h3>150 Leveis</h3>
+                <p>Por apenas R$ 90,00</p>
+                <div class="button-container">
+                    <button onclick="addToCart('150 Leveis', 90.00, 'level.png')">Adicionar ao carrinho</button>
+                    <button class="info-btn" onclick="showInfo('level.png', '150 Leveis', 
+                    '&lt;ul&gt; \
+                    &lt;li&gt;&lt;strong&gt;Vantagens:&lt;/strong&gt; Esse item é de único uso, e garante uma vantagem estratégica para quem busca o topo!&lt;/li&gt; \
+                    &lt;/ul&gt;')">
+                        Info
+                    </button>
+                </div>
+            </div>
+            
+            <div class="vip-card">
+                <img src="level.png" alt="200 Leveis">
+                <h3>200 Leveis</h3>
+                <p>Por apenas R$ 100,00</p>
+                <div class="button-container">
+                    <button onclick="addToCart('200 Leveis', 100.00, 'level.png')">Adicionar ao carrinho</button>
+                    <button class="info-btn" onclick="showInfo('level.png', '200 Leveis', 
+                    '&lt;ul&gt; \
+                    &lt;li&gt;&lt;strong&gt;Vantagens:&lt;/strong&gt; Esse item é de único uso, e garante uma vantagem estratégica para quem busca o topo!&lt;/li&gt; \
+                    &lt;/ul&gt;')">
+                        Info
+                    </button>
+                </div>
+            </div>
         </section>
+        
+        
     </main>
+    
 
+    <footer>
+        <p>Brasil Conexão Real - Desde 2019 proporcionando diversão e entretenimento para todas as pessoas do mundo!</p>
+        <div class="social-links">
+            <a href="#">Discord</a>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Info Panel Modal -->
     <div id="overlay"></div>
-
     <div id="info-panel">
-        <button class="close-btn" onclick="hideInfo()">&#10005;</button>
-        <img id="info-img" src="" alt="VIP Image">
+        <button class="close-btn" onclick="closeInfo()">X</button>
+        <img id="info-img" src="" alt="Imagem VIP">
         <h3 id="info-title"></h3>
         <p id="info-description"></p>
     </div>
+<script>    
 
-    <script>
+function addToCart(productName, price, productImg) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name: productName, price: price, image: productImg });
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    
+
+    // Criando a infobox (toast)
+    const toast = document.createElement('div');
+    toast.style.position = 'fixed';
+    toast.style.left = '50%';
+    toast.style.bottom = '20px';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.backgroundColor = '#0b1113';
+    toast.style.color = 'white';
+    toast.style.padding = '10px 20px';
+    toast.style.borderRadius = '5px';
+    toast.style.fontSize = '16px';
+    toast.style.display = 'flex';
+    toast.style.alignItems = 'center';
+    toast.style.justifyContent = 'center';
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 0.5s ease, bottom 0.5s ease';
+    toast.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.2)';
+    toast.innerHTML = `<span style="margin-right: 10px; font-size: 20px;">✔</span>${productName} foi adicionado ao carrinho.`;
+
+    // Adicionando ao body
+    document.body.appendChild(toast);
+
+    // Animar a entrada
+    setTimeout(() => {
+        toast.style.opacity = '1';
+        toast.style.bottom = '30px';
+    }, 100);
+
+    // Remover o toast após 3 segundos
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.bottom = '20px';
+        setTimeout(() => {
+            toast.remove();
+        }, 500); // tempo para a animação de saída
+    }, 3000);
+}
+
         function showInfo(imgSrc, title, description) {
             document.getElementById('info-img').src = imgSrc;
-            document.getElementById('info-title').textContent = title;
-            document.getElementById('info-description').innerHTML = description;
+            document.getElementById('info-title').innerText = title;
+            document.getElementById('info-description').innerText = description;
 
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('info-panel').style.display = 'block';
-            document.getElementById('info-panel').style.animation = 'slideIn 0.5s ease-out forwards';  // Reapply the animation
+            const infoPanel = document.getElementById('info-panel');
+            const overlay = document.getElementById('overlay');
+            
+            overlay.style.display = 'block';
+            infoPanel.style.display = 'block';
+            infoPanel.style.animation = 'slideIn 0.5s ease-out forwards';
         }
 
-        function hideInfo() {
-            document.getElementById('info-panel').style.animation = 'slideOut 0.5s ease-in forwards'; // Apply the slide out animation
-            setTimeout(function() {
-                document.getElementById('overlay').style.display = 'none';
-                document.getElementById('info-panel').style.display = 'none';
-            }, 500);  // Wait for the animation to finish before hiding the panel
+        function closeInfo() {
+            const infoPanel = document.getElementById('info-panel');
+            const overlay = document.getElementById('overlay');
+            
+            infoPanel.style.animation = 'slideOut 0.5s ease-in forwards';
+            setTimeout(() => {
+                infoPanel.style.display = 'none';
+                overlay.style.display = 'none';
+            }, 500);
         }
-
         document.querySelectorAll("nav a").forEach(link => {
             link.addEventListener("click", function() {
                 document.querySelector("nav a.active").classList.remove("active");
@@ -443,13 +518,5 @@
             });
         });
     </script>
-        <footer>
-            <p>Brasil Conexão Real - Desde 2019 proporcionando diversão e entretenimento para todas as pessoas do mundo!</p>
-            <div class="social-links">
-                <a href="#">Discord</a>
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-            </div>
-        </footer>
 </body>
 </html>

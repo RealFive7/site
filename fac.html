@@ -31,10 +31,6 @@
             max-width: 200px;
         }
 
-        .old-price {
-            text-decoration: line-through;
-            color: #999;
-        }
         nav {
             background-color: #1c1c1c;
             padding: 10px;
@@ -155,17 +151,6 @@
                 transform: translateY(0);
             }
         }
-
-        @keyframes slideOut {
-    0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -60%) scale(0.8);
-    }
-}
 
         .vip-card:nth-child(1) {
             animation-delay: 0.5s;
@@ -351,12 +336,12 @@
 
     <nav>
         <a href="index.html">VIP</a>
-        <a href="dinheiro.html" class="active">Dinheiro</a>
-        <a href="id.html">ID</a>
+        <a href="dinheiro.html" >Dinheiro</a>
+        <a href="id.html" >ID</a>
         <a href="unban.html">Unban</a>
         <a href="level.html">Level</a>
-        <a href="corp.html">Corp</a>
-        <a href="fac.html">Fac</a>
+        <a href="corp.html" >Corp</a>
+        <a href="fac.html" class="active">Fac</a>
         <a href="outros.html">Outros</a>
         <a href="cart.html">Carrinho</a>
     </nav>
@@ -364,151 +349,65 @@
     <main>
         <section class="vip-container" id="vip">
             <div class="vip-card">
-                <img src="dinheiro1.png" alt="Dinheiro Ouro">
-                <h3>10 MILHÕES</h3>
-                <p>De <span class="old-price">R$ 69,90</span> Por R$ 25,00</p>
+                <img src="corpefac.png" alt="Em breve">
+                <h3>Em breve</h3>
+                <p>Por apenas R$ 0,00</p>
                 <div class="button-container">
-                    <button onclick="addToCart('10 Milhões', 25, 'dinheiro1.png')">Adicionar ao carrinho</button>
-                    <button class="info-btn" onclick="showInfo('dinheiro1.png', 'Dinheiro Ouro', 
-                    '&lt;ul&gt; \
-                    &lt;li&gt;&lt;strong&gt;Veículos de Luxo:&lt;/strong&gt; Acesso à Lamborghini Aventador e Audi RS6.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Moto Premium:&lt;/strong&gt; Disponível a Z1000 para maior mobilidade.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Recuperação Total:&lt;/strong&gt; Fome e sede sempre 100% para manter-se no topo.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Arsenal Completo:&lt;/strong&gt; Acesso a um Pack de Armas exclusivo.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Controle Total:&lt;/strong&gt; Possibilidade de destruir veículos VIP.&lt;/li&gt; \
-                    &lt;/ul&gt;')">
+                    <button>Comprar</button>
+                    <button class="info-btn" onclick="showInfo('corpefac.png', 'Em breve', 'Descubra em breve os novos benefícios incríveis que estão por vir. Prepare-se para viver uma experiência única e inesquecível.')">
                         Info
                     </button>
                 </div>
             </div>
-        
-            <div class="vip-card">
-                <img src="dinheiro2.png" alt="Dinheiro Diamante">
-                <h3>20 MILHÕES</h3>
-                <p>De <span class="old-price">R$ 113,90</span> Por R$ 35,00</p>
-                <div class="button-container">
-                    <button onclick="addToCart('20 Milhões', 35, 'dinheiro2.png')">Adicionar ao carrinho</button>
-                    <button class="info-btn" onclick="showInfo('dinheiro2.png', 'Dinheiro Diamante', 'Benefícios exclusivos do Dinheiro Diamante.')">Info</button>
-                </div>
-            </div>
-        
-            <div class="vip-card">
-                <img src="dinheiro3.png" alt="Dinheiro Esmeralda">
-                <h3>30 MILHÕES</h3>
-                <p>De <span class="old-price">R$ 168,90</span> Por R$ 60,00</p>
-                <div class="button-container">
-                    <button onclick="addToCart('30 Milhões', 60, 'dinheiro3.png')">Adicionar ao carrinho</button>
-                    <button class="info-btn" onclick="showInfo('dinheiro3.png', 'Dinheiro Esmeralda', 'Benefícios exclusivos do Dinheiro Esmeralda.')">Info</button>
-                </div>
-            </div>
-        
-            <div class="vip-card">
-                <img src="dinheiro4.png" alt="Dinheiro Magnata">
-                <h3>40 MILHÕES</h3>
-                <p>De <span class="old-price">R$ 224,90</span> Por R$ 90,00</p>
-                <div class="button-container">
-                    <button onclick="addToCart('40 Milhões', 90, 'dinheiro4.png')">Adicionar ao carrinho</button>
-                    <button class="info-btn" onclick="showInfo('dinheiro4.png', 'Dinheiro Magnata', 'Benefícios exclusivos do Dinheiro Magnata.')">Info</button>
-                </div>
-            </div>
+            
+            
+            <!-- Repetir estrutura para outros VIPs -->
         </section>
-        
     </main>
-    
 
-    <footer>
-        <p>Brasil Conexão Real - Desde 2019 proporcionando diversão e entretenimento para todas as pessoas do mundo!</p>
-        <div class="social-links">
-            <a href="#">Discord</a>
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-        </div>
-    </footer>
-
-    <!-- Info Panel Modal -->
     <div id="overlay"></div>
+
     <div id="info-panel">
-        <button class="close-btn" onclick="closeInfo()">X</button>
-        <img id="info-img" src="" alt="Imagem VIP">
+        <button class="close-btn" onclick="hideInfo()">&#10005;</button>
+
+        <img id="info-img" src="" alt="VIP Image">
         <h3 id="info-title"></h3>
         <p id="info-description"></p>
     </div>
-    <script>    
 
-        function addToCart(productName, price, productImg) {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ name: productName, price: price, image: productImg });
-            localStorage.setItem('cart', JSON.stringify(cart));
-        
-            
-        
-            // Criando a infobox (toast)
-            const toast = document.createElement('div');
-            toast.style.position = 'fixed';
-            toast.style.left = '50%';
-            toast.style.bottom = '20px';
-            toast.style.transform = 'translateX(-50%)';
-            toast.style.backgroundColor = '#0b1113';
-            toast.style.color = 'white';
-            toast.style.padding = '10px 20px';
-            toast.style.borderRadius = '5px';
-            toast.style.fontSize = '16px';
-            toast.style.display = 'flex';
-            toast.style.alignItems = 'center';
-            toast.style.justifyContent = 'center';
-            toast.style.opacity = '0';
-            toast.style.transition = 'opacity 0.5s ease, bottom 0.5s ease';
-            toast.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.2)';
-            toast.innerHTML = `<span style="margin-right: 10px; font-size: 20px;">✔</span>${productName} foi adicionado ao carrinho.`;
-        
-            // Adicionando ao body
-            document.body.appendChild(toast);
-        
-            // Animar a entrada
-            setTimeout(() => {
-                toast.style.opacity = '1';
-                toast.style.bottom = '30px';
-            }, 100);
-        
-            // Remover o toast após 3 segundos
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.bottom = '20px';
-                setTimeout(() => {
-                    toast.remove();
-                }, 500); // tempo para a animação de saída
-            }, 3000);
+    <script>
+        function showInfo(imgSrc, title, description) {
+            document.getElementById('info-img').src = imgSrc;
+            document.getElementById('info-title').textContent = title;
+            document.getElementById('info-description').innerHTML = description;
+
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('info-panel').style.display = 'block';
+            document.getElementById('info-panel').style.animation = 'slideIn 0.5s ease-out forwards';  // Reapply the animation
         }
-        
-                function showInfo(imgSrc, title, description) {
-                    document.getElementById('info-img').src = imgSrc;
-                    document.getElementById('info-title').innerText = title;
-                    document.getElementById('info-description').innerText = description;
-        
-                    const infoPanel = document.getElementById('info-panel');
-                    const overlay = document.getElementById('overlay');
-                    
-                    overlay.style.display = 'block';
-                    infoPanel.style.display = 'block';
-                    infoPanel.style.animation = 'slideIn 0.5s ease-out forwards';
-                }
-        
-                function closeInfo() {
-                    const infoPanel = document.getElementById('info-panel');
-                    const overlay = document.getElementById('overlay');
-                    
-                    infoPanel.style.animation = 'slideOut 0.5s ease-in forwards';
-                    setTimeout(() => {
-                        infoPanel.style.display = 'none';
-                        overlay.style.display = 'none';
-                    }, 500);
-                }
-                document.querySelectorAll("nav a").forEach(link => {
-                    link.addEventListener("click", function() {
-                        document.querySelector("nav a.active").classList.remove("active");
-                        this.classList.add("active");
-                    });
-                });
-            </script>
+
+        function hideInfo() {
+            document.getElementById('info-panel').style.animation = 'slideOut 0.5s ease-in forwards'; // Apply the slide out animation
+            setTimeout(function() {
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('info-panel').style.display = 'none';
+            }, 500);  // Wait for the animation to finish before hiding the panel
+        }
+
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", function() {
+                document.querySelector("nav a.active").classList.remove("active");
+                this.classList.add("active");
+            });
+        });
+    </script>
+        <footer>
+            <p>Brasil Conexão Real - Desde 2019 proporcionando diversão e entretenimento para todas as pessoas do mundo!</p>
+            <div class="social-links">
+                <a href="#">Discord</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+        </footer>
 </body>
 </html>

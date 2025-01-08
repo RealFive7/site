@@ -152,6 +152,17 @@
             }
         }
 
+        @keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.8);
+    }
+}
+
         .vip-card:nth-child(1) {
             animation-delay: 0.5s;
         }
@@ -219,8 +230,6 @@
         .vip-card button:hover {
             background-color: #0056b3;
         }
-
-
 
         .info-btn {
             background-color: #28a745;
@@ -328,7 +337,6 @@
             .vip-card .button-container button {
                 font-size: 0.9em;
             }
-
         }
     </style>
 </head>
@@ -343,29 +351,22 @@
         <a href="id.html">ID</a>
         <a href="unban.html">Unban</a>
         <a href="level.html">Level</a>
-        <a href="corp.html">Corp & Fac</a>
+        <a href="corp.html">Corp</a>
+        <a href="cart.html">Fac</a>
         <a href="outros.html">Outros</a>
+        <a href="cart.html">Carrinho</a>
+        
     </nav>
 
     <main>
-        <section class="vip-container" id="vip">
+        <section class="vip-container" id="vip"> 
             <div class="vip-card">
                 <img src="vip1.png" alt="VIP Ouro">
                 <h3>VIP Ouro</h3>
                 <p>Por apenas R$ 5,00</p>
                 <div class="button-container">
-                    <button>Comprar</button>
-                    <button class="info-btn" onclick="showInfo('vip1.png', 'VIP Ouro', 
-                    '&lt;ul&gt; \
-                    &lt;li&gt;&lt;strong&gt;Veículos de Luxo:&lt;/strong&gt; Acesso à Lamborghini Aventador e Audi RS6.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Moto Premium:&lt;/strong&gt; Disponível a Z1000 para maior mobilidade.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Recuperação Total:&lt;/strong&gt; Fome e sede sempre 100% para manter-se no topo.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Arsenal Completo:&lt;/strong&gt; Acesso a um Pack de Armas exclusivo.&lt;/li&gt; \
-                    &lt;li&gt;&lt;strong&gt;Controle Total:&lt;/strong&gt; Possibilidade de destruir veículos VIP.&lt;/li&gt; \
-                    &lt;/ul&gt;')">
-                        Info
-                    </button>
-                    
+                    <button onclick="addToCart('VIP Ouro', 5, 'vip1.png')">Adicionar ao carrinho</button>
+                    <button class="info-btn" onclick="showInfo('vip1.png', 'VIP Ouro', 'Benefícios exclusivos do VIP Ouro.')">Info</button>
                 </div>
             </div>
             <div class="vip-card">
@@ -373,7 +374,7 @@
                 <h3>VIP Diamante</h3>
                 <p>Por apenas R$ 10,00</p>
                 <div class="button-container">
-                    <button>Comprar</button>
+                    <button onclick="addToCart('VIP Diamante', 10, 'vip2.png')">Adicionar ao carrinho</button>
                     <button class="info-btn" onclick="showInfo('vip2.png', 'VIP Diamante', 'Benefícios exclusivos do VIP Diamante.')">Info</button>
                 </div>
             </div>
@@ -382,7 +383,7 @@
                 <h3>VIP Esmeralda</h3>
                 <p>Por apenas R$ 15,00</p>
                 <div class="button-container">
-                    <button>Comprar</button>
+                    <button onclick="addToCart('VIP Esmeralda', 15, 'vip3.png')">Adicionar ao carrinho</button>
                     <button class="info-btn" onclick="showInfo('vip3.png', 'VIP Esmeralda', 'Benefícios exclusivos do VIP Esmeralda.')">Info</button>
                 </div>
             </div>
@@ -391,7 +392,7 @@
                 <h3>VIP Magnata</h3>
                 <p>Por apenas R$ 20,00</p>
                 <div class="button-container">
-                    <button>Comprar</button>
+                    <button onclick="addToCart('VIP Magnata', 20, 'vip4.png')">Adicionar ao carrinho</button>
                     <button class="info-btn" onclick="showInfo('vip4.png', 'VIP Magnata', 'Benefícios exclusivos do VIP Magnata.')">Info</button>
                 </div>
             </div>
@@ -400,7 +401,7 @@
                 <h3>VIP Safira</h3>
                 <p>Por apenas R$ 25,00</p>
                 <div class="button-container">
-                    <button>Comprar</button>
+                    <button onclick="addToCart('VIP Safira', 25, 'vip5.png')">Adicionar ao carrinho</button>
                     <button class="info-btn" onclick="showInfo('vip5.png', 'VIP Safira', 'Benefícios exclusivos do VIP Safira.')">Info</button>
                 </div>
             </div>
@@ -409,7 +410,7 @@
                 <h3>VIP Patrocinador</h3>
                 <p>Por apenas R$ 30,00</p>
                 <div class="button-container">
-                    <button>Comprar</button>
+                    <button onclick="addToCart('VIP Patrocinador', 30, 'vip6.png')">Adicionar ao carrinho</button>
                     <button class="info-btn" onclick="showInfo('vip6.png', 'VIP Patrocinador', 'Benefícios exclusivos do VIP Patrocinador.')">Info</button>
                 </div>
             </div>
@@ -418,50 +419,16 @@
                 <h3>VIP Mestre</h3>
                 <p>Por apenas R$ 35,00</p>
                 <div class="button-container">
-                    <button>Comprar</button>
+                    <button onclick="addToCart('VIP Mestre', 35, 'vip7.png')">Adicionar ao carrinho</button>
                     <button class="info-btn" onclick="showInfo('vip7.png', 'VIP Mestre', 'Benefícios exclusivos do VIP Mestre.')">Info</button>
                 </div>
             </div>
-            <!-- Repetir estrutura para outros VIPs -->
+            <!-- Repita para outros VIPs -->
         </section>
+        
     </main>
+    
 
-    <div id="overlay"></div>
-
-    <div id="info-panel">
-        <button class="close-btn" onclick="hideInfo()">&#10005;</button>
-
-        <img id="info-img" src="" alt="VIP Image">
-        <h3 id="info-title"></h3>
-        <p id="info-description"></p>
-    </div>
-
-    <script>
-        function showInfo(imgSrc, title, description) {
-            document.getElementById('info-img').src = imgSrc;
-            document.getElementById('info-title').textContent = title;
-            document.getElementById('info-description').innerHTML = description;
-
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('info-panel').style.display = 'block';
-            document.getElementById('info-panel').style.animation = 'slideIn 0.5s ease-out forwards';  // Reapply the animation
-        }
-
-        function hideInfo() {
-            document.getElementById('info-panel').style.animation = 'slideOut 0.5s ease-in forwards'; // Apply the slide out animation
-            setTimeout(function() {
-                document.getElementById('overlay').style.display = 'none';
-                document.getElementById('info-panel').style.display = 'none';
-            }, 500);  // Wait for the animation to finish before hiding the panel
-        }
-
-        document.querySelectorAll("nav a").forEach(link => {
-            link.addEventListener("click", function() {
-                document.querySelector("nav a.active").classList.remove("active");
-                this.classList.add("active");
-            });
-        });
-    </script>
     <footer>
         <p>Brasil Conexão Real - Desde 2019 proporcionando diversão e entretenimento para todas as pessoas do mundo!</p>
         <div class="social-links">
@@ -470,4 +437,91 @@
             <a href="#">Instagram</a>
         </div>
     </footer>
+
+    <!-- Info Panel Modal -->
+    <div id="overlay"></div>
+    <div id="info-panel">
+        <button class="close-btn" onclick="closeInfo()">X</button>
+        <img id="info-img" src="" alt="Imagem VIP">
+        <h3 id="info-title"></h3>
+        <p id="info-description"></p>
+    </div>
+<script>    
+
+function addToCart(productName, price, productImg) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name: productName, price: price, image: productImg });
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    
+
+    // Criando a infobox (toast)
+    const toast = document.createElement('div');
+    toast.style.position = 'fixed';
+    toast.style.left = '50%';
+    toast.style.bottom = '20px';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.backgroundColor = '#0b1113';
+    toast.style.color = 'white';
+    toast.style.padding = '10px 20px';
+    toast.style.borderRadius = '5px';
+    toast.style.fontSize = '16px';
+    toast.style.display = 'flex';
+    toast.style.alignItems = 'center';
+    toast.style.justifyContent = 'center';
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 0.5s ease, bottom 0.5s ease';
+    toast.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.2)';
+    toast.innerHTML = `<span style="margin-right: 10px; font-size: 20px;">✔</span>${productName} foi adicionado ao carrinho.`;
+
+    // Adicionando ao body
+    document.body.appendChild(toast);
+
+    // Animar a entrada
+    setTimeout(() => {
+        toast.style.opacity = '1';
+        toast.style.bottom = '30px';
+    }, 100);
+
+    // Remover o toast após 3 segundos
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.bottom = '20px';
+        setTimeout(() => {
+            toast.remove();
+        }, 500); // tempo para a animação de saída
+    }, 3000);
+}
+
+        function showInfo(imgSrc, title, description) {
+            document.getElementById('info-img').src = imgSrc;
+            document.getElementById('info-title').innerText = title;
+            document.getElementById('info-description').innerText = description;
+
+            const infoPanel = document.getElementById('info-panel');
+            const overlay = document.getElementById('overlay');
+            
+            overlay.style.display = 'block';
+            infoPanel.style.display = 'block';
+            infoPanel.style.animation = 'slideIn 0.5s ease-out forwards';
+        }
+
+        function closeInfo() {
+            const infoPanel = document.getElementById('info-panel');
+            const overlay = document.getElementById('overlay');
+            
+            infoPanel.style.animation = 'slideOut 0.5s ease-in forwards';
+            setTimeout(() => {
+                infoPanel.style.display = 'none';
+                overlay.style.display = 'none';
+            }, 500);
+        }
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", function() {
+                document.querySelector("nav a.active").classList.remove("active");
+                this.classList.add("active");
+            });
+        });
+    </script>
+</body>
 </html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Carrinho - Brasil Conexão Real</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: url('fotodobanneratrasdalogo.png') no-repeat center/cover;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 200px;
+        }
+
+        nav {
+            background-color: #1c1c1c;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+
+        nav a.active {
+            background-color: #007bff;
+            animation: activateNav 0.5s ease-out;
+        }
+
+        @keyframes activateNav {
+            0% {
+                background-color: #333;
+            }
+            100% {
+                background-color: #007bff;
+            }
+        }
+
+        nav a:hover {
+            background-color: #333;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .cart-container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item img {
+            max-width: 70px;
+            border-radius: 5px;
+        }
+
+        .cart-item .item-details {
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+
+        .cart-item .item-details h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .cart-item .item-details p {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        .cart-summary {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .cart-summary p {
+            margin: 10px 0;
+        }
+
+        .payment-method {
+            margin-top: 20px;
+        }
+
+        .payment-method select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #1c1c1c;
+            color: #fff;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .qrcode {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qrcode img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .cart-container {
+                padding: 15px;
+            }
+
+            .cart-item {
+                flex-wrap: wrap;
+            }
+
+            .cart-item img {
+                max-width: 50px;
+            }
+
+            .cart-item .item-details {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo Brasil Conexão Real">
+    </header>
+
+    <nav>
+        <a href="index.html">VIP</a>
+        <a href="dinheiro.html">Dinheiro</a>
+        <a href="id.html">ID</a>
+        <a href="unban.html">Unban</a>
+        <a href="level.html">Level</a>
+        <a href="corp.html">Corp</a>
+        <a href="fac.html">Fac</a>
+        <a href="outros.html">Outros</a>
+        <a href="cart.html" class="active">Carrinho</a>
+    </nav>
+
+    <main>
+        <div class="cart-container">
+            <h2>Carrinho</h2>
+            <div id="cart-items">
+                <!-- Os itens do carrinho serão carregados aqui -->
+            </div>
+            <div class="cart-summary">
+                <p>Quantidade de itens no carrinho: <span id="item-count">0</span></p>
+                <p>Subtotal: R$ <span id="total-price">0.00</span></p>
+
+                <div class="payment-method">
+                    <label for="payment">Método de Pagamento:</label>
+                    <select id="payment">
+                        <option value="pix">Pix</option>
+                    </select>
+                </div>
+
+                <button class="checkout-btn" onclick="finalizarCompra()">Finalizar compra</button>
+            </div>
+            <div class="qrcode" id="qrcode">
+                <img src="qrcodes/qrcode5.png" alt="QR Code para pagamento">
+            </div>
+        </div>
+    </main>
+
+    <script>
+function loadCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItems = document.getElementById('cart-items');
+    const itemCount = document.getElementById('item-count');
+    const totalPrice = document.getElementById('total-price');
+
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="item-details">
+                <h3>${item.name}</h3>
+                <p>R$ ${item.price.toFixed(2)}</p>
+            </div>
+            <button class="remove-btn" onclick="removeItem(${index})">Remover</button>
+        `;
+        cartItems.appendChild(cartItem);
+        total += item.price;
+    });
+
+    itemCount.textContent = cart.length;
+    totalPrice.textContent = total.toFixed(2);
+}
+
+
+        function removeItem(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function finalizarCompra() {
+            const total = parseFloat(document.getElementById('total-price').textContent);
+            const qrcode = document.getElementById('qrcode');
+            const qrcodeImg = qrcode.querySelector('img');
+
+            // Determina o nome do arquivo baseado no total
+            const qrcodeFilename = `qrcodes/qrcode${total}.png`;
+
+            // Atualiza a imagem do QR code e a exibe
+            qrcodeImg.src = qrcodeFilename;
+            qrcode.style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
+</body>
+</html>
